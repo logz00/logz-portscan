@@ -39,6 +39,10 @@ def port_enum():
     print("\n[>] Starting TCP Scan...\n")
     os.system(f"sudo nmap -sS -Pn {target}")
 
+def check_ip():
+    print("[*] Getting Your IP...\n")
+    time.sleep(3)
+    os.system("ip a | grep 'inet '")
 
 def exit_program():
     print("\n[!] Exiting the program....\n")
@@ -54,6 +58,7 @@ while True:
     print("[1] LAN Host Enumeration")
     print("[2] TCP Port Scan (open ports)")
     print("[3] Service Enumeration")
+    #  add check ip button  --print("")
     print("[4] Exit")
     print("")
     scan_type = int(input("Scan Option >>  "))
