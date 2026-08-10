@@ -40,8 +40,8 @@ def port_enum():
     os.system(f"sudo nmap -sS -Pn {target}")
 
 def check_ip():
-    print("[*] Getting Your IP...\n")
-    time.sleep(3)
+    print("[*] Getting Your IP...")
+    time.sleep(2)
     os.system("ip a | grep 'inet '")
 
 def exit_program():
@@ -51,31 +51,37 @@ def exit_program():
 # program loop
 while True:
     print("")
-    print(">> Python Port Scanner using Nmap by Logz <<")
+    print(">> Nmap Scanning Tool by Logz00 <<")
     print("")
     print("[>] Scan Options ")
     print("")
     print("[1] LAN Host Enumeration")
     print("[2] TCP Port Scan (open ports)")
     print("[3] Service Enumeration")
-    #  add check ip button  --print("")
-    print("[4] Exit")
+    print("[4] Check My IP Info")
+    print("[5] Exit")
     print("")
-    scan_type = int(input("Scan Option >>  "))
+
+    try:
+        scan_type = int(input("Scan Option >>  "))
+    except ValueError:
+        print("[!] Please enter a number 1-5")
+        continue
 
     if scan_type == 1:
         host_enum()
-        break
     elif scan_type == 2:
         port_enum()
-        break
     elif scan_type == 3:
         service_enum()
-        break
     elif scan_type == 4:
+        check_ip()
+    elif scan_type == 5:
         exit_program()
         break
-        
+    else:
+        os.system("clear")
+        print("[!] Invalid option, expected an option 1-5")
 
 
 
